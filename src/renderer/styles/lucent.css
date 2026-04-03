@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes landingNoteIn {
+  from { grid-template-rows: 0fr; opacity: 0; }
+  to { grid-template-rows: 1fr; opacity: 1; }
+}
+
+@keyframes landingNoteOut {
+  from { grid-template-rows: 1fr; opacity: 1; }
+  to { grid-template-rows: 0fr; opacity: 0; }
+}
+
+@keyframes popoverFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popoverFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes receivingPulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.80; }
+}
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    background-color: #FAF7F0;
+    color: #2C2A25;
+    font-family: Inter, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #E0D9CE;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #C9A96E;
+  }
+}
+
+@layer components {
+  .reading-text {
+    font-family: Georgia, serif;
+    font-size: 1.0625rem;
+    line-height: 1.85;
+    color: #2C2A25;
+    letter-spacing: 0.01em;
+  }
+
+  .passage-card {
+    @apply bg-lucent-surface border border-lucent-border rounded-sm px-6 py-4 cursor-text select-text;
+    transition: border-color 0.15s ease;
+  }
+
+  .passage-card:hover {
+    border-color: #C9A96E;
+  }
+
+  .state-badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .state-resonant {
+    background: rgba(201, 169, 110, 0.15);
+    color: #A07840;
+    border: 1px solid rgba(201, 169, 110, 0.4);
+  }
+
+  .state-latent {
+    background: rgba(122, 116, 104, 0.1);
+    color: #7A7468;
+    border: 1px solid rgba(122, 116, 104, 0.3);
+  }
+
+  .state-recontextualized {
+    background: rgba(44, 42, 37, 0.06);
+    color: #2C2A25;
+    border: 1px solid rgba(44, 42, 37, 0.2);
+  }
+
+  .surface-header {
+    @apply border-b border-lucent-border px-6 py-4 flex items-center justify-between;
+    background: rgba(242, 237, 227, 0.8);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .btn-ghost {
+    @apply px-3 py-1.5 text-sm text-lucent-muted hover:text-lucent-text hover:bg-lucent-surface rounded-sm transition-colors;
+  }
+
+  .btn-accent {
+    @apply px-4 py-2 text-sm bg-lucent-accent text-white rounded-sm hover:opacity-90 transition-opacity;
+  }
+
+  .btn-outline {
+    @apply px-3 py-1.5 text-sm border border-lucent-border text-lucent-text hover:border-lucent-accent rounded-sm transition-colors;
+  }
+
+  .input-lucent {
+    @apply w-full bg-lucent-surface border border-lucent-border rounded-sm px-3 py-2 text-sm text-lucent-text placeholder-lucent-muted;
+    outline: none;
+  }
+  .input-lucent:focus {
+    border-color: #C9A96E;
+  }
+
+  /* Landing note textarea placeholder */
+  .landing-note-textarea::placeholder {
+    font-style: italic;
+    color: rgba(107, 101, 96, 0.5);
+  }
+
+  .action-menu {
+    @apply absolute z-50 bg-white border border-lucent-border rounded shadow-md py-1;
+    min-width: 180px;
+  }
+
+  .action-menu-item {
+    @apply px-4 py-2 text-sm text-lucent-text hover:bg-lucent-surface cursor-pointer flex items-center gap-2;
+  }
+}
